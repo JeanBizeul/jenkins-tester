@@ -54,8 +54,11 @@ fclean:		clean
 
 re:		fclean all
 
-tests_run: title $(OBJS) $(OBJS_TEST)
+unit_tests:
+	$(OBJS) $(OBJS_TEST)
 	$(CC) -o $(TEST_OUTPUT) $(SRCS) $(OBJS_TEST) --coverage -lcriterion
+
+tests_run: unit_tests
 	./$(TEST_OUTPUT)
 
 tests_coverage:	tests_run
